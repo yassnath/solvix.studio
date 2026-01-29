@@ -510,19 +510,18 @@ const App = () => {
             <div className="project-grid">
               <article className="project-card reveal" style={{ "--delay": "0.25s" }}>
                 <div className="project-top">
-                  <h3>Lunar Command</h3>
+                  <h3>Solvix Dashboard</h3>
                   <span className="chip">{t("projects.card1.chip")}</span>
                 </div>
                 <div className="project-preview preview-1">
                   <picture>
-                    <source srcSet="/assets/img/preview-1.png" type="image/png" />
+                    <source srcSet="/assets/img/preview1.png" type="image/png" />
                     <img
-                      src="/assets/img/preview-1.svg"
+                      src="/assets/img/preview1.png"
                       alt="Lunar Command preview"
                       className="preview-image"
                     />
                   </picture>
-                  <span className="preview-chip">{t("projects.preview")}</span>
                 </div>
                 <p>{t("projects.card1.desc")}</p>
                 <div className="project-tags">
@@ -533,19 +532,18 @@ const App = () => {
               </article>
               <article className="project-card reveal" style={{ "--delay": "0.3s" }}>
                 <div className="project-top">
-                  <h3>Neon Dispatch</h3>
+                  <h3>Solvix Invitation</h3>
                   <span className="chip">{t("projects.card2.chip")}</span>
                 </div>
                 <div className="project-preview preview-2">
                   <picture>
-                    <source srcSet="/assets/img/preview-2.png" type="image/png" />
+                    <source srcSet="/assets/img/preview2.png" type="image/png" />
                     <img
-                      src="/assets/img/preview-2.svg"
+                      src="/assets/img/preview2.png"
                       alt="Neon Dispatch preview"
                       className="preview-image"
                     />
                   </picture>
-                  <span className="preview-chip">{t("projects.preview")}</span>
                 </div>
                 <p>{t("projects.card2.desc")}</p>
                 <div className="project-tags">
@@ -556,19 +554,18 @@ const App = () => {
               </article>
               <article className="project-card reveal" style={{ "--delay": "0.35s" }}>
                 <div className="project-top">
-                  <h3>Atlas Studio</h3>
+                  <h3>Solvix Landing</h3>
                   <span className="chip">{t("projects.card3.chip")}</span>
                 </div>
                 <div className="project-preview preview-3">
                   <picture>
-                    <source srcSet="/assets/img/preview-3.png" type="image/png" />
+                    <source srcSet="/assets/img/preview3.png" type="image/png" />
                     <img
-                      src="/assets/img/preview-3.svg"
+                      src="/assets/img/preview3.png"
                       alt="Atlas Studio preview"
                       className="preview-image"
                     />
                   </picture>
-                  <span className="preview-chip">{t("projects.preview")}</span>
                 </div>
                 <p>{t("projects.card3.desc")}</p>
                 <div className="project-tags">

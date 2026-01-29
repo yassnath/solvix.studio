@@ -712,7 +712,7 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
 
 .project-preview {
   position: relative;
-  height: 120px;
+  height: clamp(140px, 16vw, 190px);
   border-radius: 16px;
   border: 1px solid var(--stroke);
   overflow: hidden;
