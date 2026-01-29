@@ -605,6 +605,33 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
   animation-delay: 0.3s;
 }
 
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(7, 11, 20, 0.85), rgba(7, 11, 20, 0.95));
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.page-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.signal.signal--loader {
+  margin: 0;
+  gap: 0.6rem;
+}
+
+.signal.signal--loader div {
+  width: 16px;
+  height: 52px;
+  box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.35);
+}
+
 .orbit {
   position: absolute;
   inset: -40px;

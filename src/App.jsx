@@ -28,6 +28,7 @@ const App = () => {
   const [navOpen, setNavOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [chatOpen, setChatOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [chatInput, setChatInput] = useState("");
   const [messages, setMessages] = useState([]);
   const chatMessagesRef = useRef(null);
@@ -49,6 +50,20 @@ const App = () => {
   useEffect(() => {
     document.body.classList.toggle("nav-open", navOpen);
   }, [navOpen]);
+
+  useEffect(() => {
+    const finishLoading = () => {
+      window.setTimeout(() => setIsLoading(false), 200);
+    };
+
+    if (document.readyState === "complete") {
+      finishLoading();
+      return undefined;
+    }
+
+    window.addEventListener("load", finishLoading);
+    return () => window.removeEventListener("load", finishLoading);
+  }, []);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
@@ -276,6 +291,14 @@ const App = () => {
 
   return (
     <>
+      <div className={`page-loader ${isLoading ? "" : "is-hidden"}`}>
+        <div className="signal signal--loader">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
       <div className="background">
         <div className="grid"></div>
         <div className="orb orb-1"></div>
