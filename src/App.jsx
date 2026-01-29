@@ -243,13 +243,35 @@ const App = () => {
 
   const skillChips = [
     "Figma",
+    "Adobe XD",
+    "Illustrator",
+    "Photoshop",
     "After Effects",
+    "Framer",
+    "Notion",
     "HTML5",
     "CSS3",
     "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Express",
+    "WordPress",
+    "Webflow",
+    "Tailwind CSS",
     "GSAP",
-    "Notion",
-    "Framer"
+    "Git",
+    "GitHub",
+    "Postman",
+    "Docker",
+    "Vercel",
+    "Netlify",
+    "MySQL",
+    "PostgreSQL",
+    "MongoDB",
+    "Firebase",
+    "Supabase"
   ];
 
   return (

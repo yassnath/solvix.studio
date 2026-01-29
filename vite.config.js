@@ -1,8 +1,5 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
-
-const API_URL = process.env.CEREBRAS_API_URL || "https://api.cerebras.ai/v1/chat/completions";
-const MODEL = process.env.CEREBRAS_MODEL || "llama3.1-8b";
 
 const parseBody = (req) =>
   new Promise((resolve, reject) => {
@@ -18,80 +15,86 @@ const parseBody = (req) =>
     req.on("error", reject);
   });
 
-export default defineConfig({
-  plugins: [
-    react(),
-    {
-      name: "cerebras-local-proxy",
-      configureServer(server) {
-        server.middlewares.use("/api/cerebras", async (req, res) => {
-          res.setHeader("Access-Control-Allow-Origin", "*");
-          res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-          res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+  const apiUrl = env.CEREBRAS_API_URL || "https://api.cerebras.ai/v1/chat/completions";
+  const model = env.CEREBRAS_MODEL || "llama3.1-8b";
 
-          if (req.method === "OPTIONS") {
-            res.statusCode = 204;
-            res.end();
-            return;
-          }
+  return {
+    plugins: [
+      react(),
+      {
+        name: "cerebras-local-proxy",
+        configureServer(server) {
+          server.middlewares.use("/api/cerebras", async (req, res) => {
+            res.setHeader("Access-Control-Allow-Origin", "*");
+            res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+            res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
 
-          if (req.method !== "POST") {
-            res.statusCode = 405;
-            res.end("Method Not Allowed");
-            return;
-          }
-
-          const apiKey = process.env.CEREBRAS_API_KEY;
-          if (!apiKey) {
-            res.statusCode = 500;
-            res.setHeader("Content-Type", "application/json");
-            res.end(JSON.stringify({ error: "Missing CEREBRAS_API_KEY in environment." }));
-            return;
-          }
-
-          try {
-            const rawBody = await parseBody(req);
-            const payload = rawBody ? JSON.parse(rawBody) : {};
-            const messages = Array.isArray(payload.messages) ? payload.messages : [];
-
-            const upstream = await fetch(API_URL, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${apiKey}`
-              },
-              body: JSON.stringify({
-                model: MODEL,
-                messages,
-                temperature: 0.4,
-                max_tokens: 512
-              })
-            });
-
-            let data = {};
-            try {
-              data = await upstream.json();
-            } catch (error) {
-              data = {};
-            }
-
-            res.statusCode = upstream.status;
-            res.setHeader("Content-Type", "application/json");
-
-            if (!upstream.ok) {
-              res.end(JSON.stringify({ error: data?.error || "Upstream error" }));
+            if (req.method === "OPTIONS") {
+              res.statusCode = 204;
+              res.end();
               return;
             }
 
-            const reply = data?.choices?.[0]?.message?.content || "";
-            res.end(JSON.stringify({ reply }));
-          } catch (error) {
-            res.statusCode = 500;
-            res.setHeader("Content-Type", "application/json");
-            res.end(JSON.stringify({ error: "Server error while contacting Cerebras." }));
-          }
-        });
+            if (req.method !== "POST") {
+              res.statusCode = 405;
+              res.end("Method Not Allowed");
+              return;
+            }
+
+            const apiKey = env.CEREBRAS_API_KEY || process.env.CEREBRAS_API_KEY;
+            if (!apiKey) {
+              res.statusCode = 500;
+              res.setHeader("Content-Type", "application/json");
+              res.end(JSON.stringify({ error: "Missing CEREBRAS_API_KEY in environment." }));
+              return;
+            }
+
+            try {
+              const rawBody = await parseBody(req);
+              const payload = rawBody ? JSON.parse(rawBody) : {};
+              const messages = Array.isArray(payload.messages) ? payload.messages : [];
+
+              const upstream = await fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                  model,
+                  messages,
+                  temperature: 0.4,
+                  max_tokens: 512
+                })
+              });
+
+              let data = {};
+              try {
+                data = await upstream.json();
+              } catch (error) {
+                data = {};
+              }
+
+              res.statusCode = upstream.status;
+              res.setHeader("Content-Type", "application/json");
+
+              if (!upstream.ok) {
+                res.end(JSON.stringify({ error: data?.error || "Upstream error" }));
+                return;
+              }
+
+              const reply = data?.choices?.[0]?.message?.content || "";
+              res.end(JSON.stringify({ reply }));
+            } catch (error) {
+              res.statusCode = 500;
+              res.setHeader("Content-Type", "application/json");
+              res.end(JSON.stringify({ error: "Server error while contacting Cerebras." }));
+            }
+          });
+        }
       }
-    }
-  ]
+    ]
+  };
 });
