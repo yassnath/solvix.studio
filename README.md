@@ -1,46 +1,55 @@
 # solvix.studio
 
-Portfolio website untuk Solvix Studio dengan gaya futuristik, theme toggle, bilingual (ID/EN), dan chatbot Cerebras.
+Portfolio website untuk Solvix Studio dengan tema gelap/terang, bilingual (ID/EN), dan chatbot Cerebras. Dibangun ulang dengan React + Vite.
 
 ## Struktur
 
 ```
-assets/
-  css/
-    styles.css
-  js/
-    script.js
-  img/
-    logo.png
-    logo2.png
+public/
+  assets/
+    img/
+      logo.png
+      logo2.png
+src/
+  data/
+    translations.js
+  App.jsx
+  main.jsx
+  styles.css
 index.html
 server.js
 ```
 
 ## Menjalankan (lokal)
 
-### Opsi A: Static + API (disarankan)
-1. Jalankan server API:
+### UI (React)
+1. Install dependencies:
    ```powershell
-   $env:CEREBRAS_API_KEY="isi_api_key"
-   $env:PORT="3002"
-   node server.js
+   npm install
    ```
-2. Buka `index.html` melalui Live Server / static server (mis. `http://127.0.0.1:3000`).
-3. Pastikan `data-chat-endpoint` di `index.html` mengarah ke:
+2. Jalankan dev server:
+   ```powershell
+   npm run dev
    ```
-   http://127.0.0.1:3002/api/cerebras
-   ```
+3. Buka URL dari Vite (default `http://127.0.0.1:5173`).
 
-### Opsi B: Single server
-1. Jalankan server:
-   ```powershell
-   $env:CEREBRAS_API_KEY="isi_api_key"
-   $env:PORT="3002"
-   node server.js
-   ```
-2. Buka `http://127.0.0.1:3002/`.
-3. (Opsional) Ubah `data-chat-endpoint` di `index.html` menjadi `/api/cerebras`.
+### API Chatbot (Cerebras)
+Jalankan server API terpisah:
+```powershell
+$env:CEREBRAS_API_KEY="isi_api_key"
+$env:PORT="3002"
+node server.js
+```
+
+Secara default app mengakses:
+```
+http://127.0.0.1:3002/api/cerebras
+```
+
+Opsional: ubah endpoint via env Vite:
+```
+VITE_CHAT_ENDPOINT=http://127.0.0.1:3002/api/cerebras
+```
 
 ## Environment Variables
 
@@ -48,6 +57,7 @@ server.js
 - `CEREBRAS_MODEL` (opsional, default: `llama3.1-8b`)
 - `CEREBRAS_API_URL` (opsional)
 - `PORT` (opsional, default: `3000`)
+ - `VITE_CHAT_ENDPOINT` (opsional, untuk UI React)
 
 ## Catatan
 

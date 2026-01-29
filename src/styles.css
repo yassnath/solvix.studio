@@ -18,6 +18,8 @@
   --accent-warm-soft: rgba(159, 220, 255, 0.24);
   --card: rgba(255, 255, 255, 0.75);
   --card-strong: rgba(255, 255, 255, 0.95);
+  --card-glow: 0 0 0 1px rgba(var(--accent-rgb), 0.18),
+    0 0 22px rgba(var(--accent-rgb), 0.18);
   --stroke: rgba(12, 18, 28, 0.12);
   --grid: rgba(12, 18, 28, 0.08);
   --shadow: 0 25px 70px rgba(13, 19, 34, 0.15);
@@ -64,6 +66,8 @@ body[data-theme="dark"] {
   --accent-warm-soft: rgba(185, 232, 255, 0.28);
   --card: rgba(15, 22, 34, 0.76);
   --card-strong: rgba(18, 28, 44, 0.9);
+  --card-glow: 0 0 0 1px rgba(var(--accent-rgb), 0.24),
+    0 0 26px rgba(var(--accent-rgb), 0.24);
   --stroke: rgba(130, 150, 180, 0.2);
   --grid: rgba(110, 130, 170, 0.14);
   --shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
@@ -461,7 +465,7 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
   border: 1px solid var(--stroke);
   border-radius: var(--radius-sm);
   padding: 1rem;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), var(--card-glow);
 }
 
 .stat-card h3 {
@@ -543,18 +547,30 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
   margin-bottom: 1.2rem;
 }
 
+.lead,
+.about-copy p,
+.project-card p,
+.skills-copy p,
+.contact-copy p,
+.timeline-item p,
+.holo-content p {
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
+}
+
 .holo-tags {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.55rem;
   flex-wrap: wrap;
   margin-top: auto;
 }
 
 .holo-tags span {
-  padding: 0.3rem 0.7rem;
+  padding: 0.28rem 0.6rem;
   border-radius: 999px;
   background: var(--accent-soft);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
 }
 
@@ -567,7 +583,12 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
 .signal div {
   width: 10px;
   height: 26px;
-  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.9), rgba(var(--accent-rgb), 0.2));
+  background: linear-gradient(
+    180deg,
+    rgba(var(--accent-rgb), 0.9),
+    rgba(var(--accent-bright-rgb), 0.55),
+    rgba(var(--accent-warm-rgb), 0.25)
+  );
   border-radius: 999px;
   animation: bounce 1.5s ease-in-out infinite;
 }
@@ -613,6 +634,10 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
   margin-bottom: 1.2rem;
 }
 
+.about-copy p + p {
+  margin-top: 0.9rem;
+}
+
 .about-panels {
   display: grid;
   gap: 1.5rem;
@@ -623,7 +648,7 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
   border: 1px solid var(--stroke);
   border-radius: var(--radius-sm);
   padding: 1.5rem;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), var(--card-glow);
 }
 
 .panel-card h3 {
@@ -662,7 +687,7 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
   border: 1px solid var(--stroke);
   border-radius: var(--radius);
   padding: 1.7rem;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), var(--card-glow);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -671,7 +696,7 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
 
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 35px 80px rgba(12, 18, 28, 0.2);
+  box-shadow: 0 35px 80px rgba(12, 18, 28, 0.2), var(--card-glow);
 }
 
 .project-top {
@@ -729,6 +754,15 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
   border: 1px solid var(--accent-soft-strong);
   font-size: 0.85rem;
   font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.skill-chip:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  color: #031316;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(var(--accent-rgb), 0.35);
 }
 
 .timeline {
@@ -744,7 +778,7 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
   border-radius: var(--radius-sm);
   background: var(--card);
   border: 1px solid var(--stroke);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), var(--card-glow);
 }
 
 .time {
@@ -787,7 +821,7 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
   border: 1px solid var(--stroke);
   border-radius: var(--radius);
   padding: 2rem;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), var(--card-glow);
   display: grid;
   gap: 1rem;
 }
@@ -868,7 +902,7 @@ textarea:focus {
   background: var(--card-strong);
   border: 1px solid var(--stroke);
   border-radius: 18px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), var(--card-glow);
   padding: 1rem;
   display: grid;
   gap: 0.9rem;
