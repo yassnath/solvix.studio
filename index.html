@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solvix Studio | Portofolio Pribadi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/logo2.png" type="image">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background">
+    <div class="grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#home">
+        <img class="logo-mark" src="images/logo2.png" alt="Solvix Studio">
+        <span class="logo-text">Solvix Studio</span>
+      </a>
+      <nav class="nav" id="site-nav" data-chat-context="Navigation">
+        <a href="#home" class="nav-link active" data-i18n="nav.home">Beranda</a>
+        <a href="#about" class="nav-link" data-i18n="nav.about">Profil</a>
+        <a href="#projects" class="nav-link" data-i18n="nav.projects">Karya</a>
+        <a href="#skills" class="nav-link" data-i18n="nav.skills">Stack</a>
+        <a href="#experience" class="nav-link" data-i18n="nav.experience">Lintasan</a>
+        <a href="#contact" class="nav-link" data-i18n="nav.contact">Kontak</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ganti tema" data-i18n-aria="aria.theme" aria-pressed="false">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 14.5A9 9 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5Z"></path>
+          </svg>
+        </button>
+        <div class="lang-toggle" id="lang-toggle" role="group" aria-label="Ganti bahasa" data-i18n-aria="aria.lang" data-lang="id">
+          <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"></path>
+          </svg>
+          <button class="lang-btn" type="button" data-lang="id" aria-pressed="false">IN</button>
+          <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hero" id="home" data-chat-context="Home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <!--<p class="eyebrow reveal" style="--delay: 0.1s;" data-i18n="hero.eyebrow">Portofolio pribadi 2024</p>-->
+          <h1 class="reveal" style="--delay: 0.2s;" data-i18n="hero.title">Mendesain produk digital yang menarik dan relevan.</h1>
+          <p class="lead reveal" style="--delay: 0.3s;">
+            <span data-i18n="hero.lead">Kami adalah desainer dan front-end creator di Solvix Studio. Fokus pada UI yang menarik, strategi produk, dan pengalaman pengguna yang cepat dan elegan.</span>
+          </p>
+          <div class="hero-actions reveal" style="--delay: 0.4s;">
+            <a class="btn primary" href="#projects" data-i18n="hero.cta.primary">Lihat karya</a>
+            <a class="btn ghost" href="#contact" data-i18n="hero.cta.secondary">Ayo kolaborasi</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-card reveal" style="--delay: 0.5s;">
+              <h3>7+</h3>
+              <p data-i18n="hero.stats.products">Produk konsep</p>
+            </div>
+            <div class="stat-card reveal" style="--delay: 0.55s;">
+              <h3>4</h3>
+              <p data-i18n="hero.stats.brands">Brand digital</p>
+            </div>
+            <div class="stat-card reveal" style="--delay: 0.6s;">
+              <h3>2</h3>
+              <p data-i18n="hero.stats.hackathons">Hackathon</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="holo-card reveal" style="--delay: 0.4s;">
+            <div class="holo-header">
+              <span class="pulse-dot"></span>
+              <span data-i18n="hero.holo.label">Visual System</span>
+              <span class="status" data-i18n="hero.holo.status">Online</span>
+            </div>
+            <div class="holo-content">
+              <div class="signal">
+                <div></div><div></div><div></div><div></div>
+              </div>
+              <h4>Solvix Interface Kit</h4>
+              <p data-i18n="hero.holo.desc">Grid modular, komponen neon, dan navigasi adaptif untuk produk masa depan.</p>
+              <div class="holo-tags">
+                <span>UI/UX</span>
+                <span>Motion</span>
+                <span>Web</span>
+              </div>
+            </div>
+            <div class="orbit"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about" data-chat-context="About">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <p class="eyebrow reveal" style="--delay: 0.1s;" data-i18n="about.eyebrow">Profil</p>
+          <h2 class="reveal" style="--delay: 0.2s;" data-i18n="about.title">Menggabungkan estetika futuristik dengan bisnis yang realistis.</h2>
+          <p class="reveal" style="--delay: 0.3s;">
+            <span data-i18n="about.p1">Solvix Studio membantu tim membangun produk digital dari nol sampai siap rilis. Gaya kami mengandalkan tipografi tegas, grid presisi, dan warna neon yang terkontrol.</span>
+          </p>
+          <p class="reveal" style="--delay: 0.35s;">
+            <span data-i18n="about.p2">Fokus saat ini: desain sistem, prototyping cepat, dan front-end yang responsif untuk startup, studio kreatif, serta produk teknologi.</span>
+          </p>
+        </div>
+        <div class="about-panels">
+          <div class="panel-card reveal" style="--delay: 0.3s;">
+            <h3 data-i18n="about.panel1.title">Spesialisasi</h3>
+            <ul>
+              <li data-i18n="about.panel1.item1">Figma dan prototyping interaktif</li>
+              <li data-i18n="about.panel1.item2">Web flow dengan HTML, CSS, JS</li>
+              <li data-i18n="about.panel1.item3">Branding digital dan strategi konten</li>
+            </ul>
+          </div>
+          <div class="panel-card reveal" style="--delay: 0.4s;">
+            <h3 data-i18n="about.panel2.title">Nilai kerja</h3>
+            <ul>
+              <li data-i18n="about.panel2.item1">Iterasi cepat, keputusan data ringan</li>
+              <li data-i18n="about.panel2.item2">Kolaborasi transparan dan fokus</li>
+              <li data-i18n="about.panel2.item3">Visual konsisten dari konsep ke rilis</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects" id="projects" data-chat-context="Projects">
+      <div class="container">
+        <div class="section-title">
+          <p class="eyebrow reveal" style="--delay: 0.1s;" data-i18n="projects.eyebrow">Karya pilihan</p>
+          <h2 class="reveal" style="--delay: 0.2s;" data-i18n="projects.title">Eksperimen produk dengan karakter kuat.</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card reveal" style="--delay: 0.25s;">
+            <div class="project-top">
+              <h3>Lunar Command</h3>
+              <span class="chip" data-i18n="projects.card1.chip">UI System</span>
+            </div>
+            <p data-i18n="projects.card1.desc">Dashboard operasi berbasis data real time untuk tim logistik luar angkasa.</p>
+            <div class="project-tags">
+              <span data-i18n="projects.card1.tag1">Web App</span>
+              <span data-i18n="projects.card1.tag2">Data Viz</span>
+              <span data-i18n="projects.card1.tag3">Dark Glass</span>
+            </div>
+          </article>
+          <article class="project-card reveal" style="--delay: 0.3s;">
+            <div class="project-top">
+              <h3>Neon Dispatch</h3>
+              <span class="chip" data-i18n="projects.card2.chip">Brand</span>
+            </div>
+            <p data-i18n="projects.card2.desc">Identitas visual untuk platform pengiriman kota pintar dengan nuansa neon hijau.</p>
+            <div class="project-tags">
+              <span data-i18n="projects.card2.tag1">Branding</span>
+              <span data-i18n="projects.card2.tag2">Motion</span>
+              <span data-i18n="projects.card2.tag3">Landing</span>
+            </div>
+          </article>
+          <article class="project-card reveal" style="--delay: 0.35s;">
+            <div class="project-top">
+              <h3>Atlas Studio</h3>
+              <span class="chip" data-i18n="projects.card3.chip">Product</span>
+            </div>
+            <p data-i18n="projects.card3.desc">Produk portofolio kreator dengan modul interaktif dan layout modular.</p>
+            <div class="project-tags">
+              <span data-i18n="projects.card3.tag1">Portfolio</span>
+              <span data-i18n="projects.card3.tag2">UX Flow</span>
+              <span data-i18n="projects.card3.tag3">CMS</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills" id="skills" data-chat-context="Skills">
+      <div class="container skills-grid">
+        <div class="skills-copy">
+          <p class="eyebrow reveal" style="--delay: 0.1s;" data-i18n="skills.eyebrow">Stack utama</p>
+          <h2 class="reveal" style="--delay: 0.2s;" data-i18n="skills.title">Alat yang kami gunakan untuk membangun pengalaman futuristik.</h2>
+          <p class="reveal" style="--delay: 0.3s;">
+            <span data-i18n="skills.desc">Kombinasi desain, prototyping, dan front-end memastikan ide tetap konsisten saat diwujudkan.</span>
+          </p>
+        </div>
+        <div class="skills-list">
+          <span class="skill-chip reveal" style="--delay: 0.25s;">Figma</span>
+          <span class="skill-chip reveal" style="--delay: 0.3s;">After Effects</span>
+          <span class="skill-chip reveal" style="--delay: 0.35s;">HTML5</span>
+          <span class="skill-chip reveal" style="--delay: 0.4s;">CSS3</span>
+          <span class="skill-chip reveal" style="--delay: 0.45s;">JavaScript</span>
+          <span class="skill-chip reveal" style="--delay: 0.5s;">GSAP</span>
+          <span class="skill-chip reveal" style="--delay: 0.55s;">Notion</span>
+          <span class="skill-chip reveal" style="--delay: 0.6s;">Framer</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experience" id="experience" data-chat-context="Experience">
+      <div class="container">
+        <div class="section-title">
+          <p class="eyebrow reveal" style="--delay: 0.1s;" data-i18n="experience.eyebrow">Lintasan</p>
+          <h2 class="reveal" style="--delay: 0.2s;" data-i18n="experience.title">Perjalanan membangun produk kreatif.</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item reveal" style="--delay: 0.25s;">
+            <div class="time">2024</div>
+            <div class="detail">
+              <h3>Solvix Studio</h3>
+              <p data-i18n="experience.item1.desc">Memimpin desain sistem untuk portofolio klien teknologi dan edutech.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal" style="--delay: 0.3s;">
+            <div class="time">2023</div>
+            <div class="detail">
+              <h3 data-i18n="experience.item2.title">Freelance Product Designer</h3>
+              <p data-i18n="experience.item2.desc">Membangun UI untuk startup logistik dan health tech dengan fokus pada konversi.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal" style="--delay: 0.35s;">
+            <div class="time">2022</div>
+            <div class="detail">
+              <h3 data-i18n="experience.item3.title">UI Engineer</h3>
+              <p data-i18n="experience.item3.desc">Eksperimen motion dan micro interactions untuk aplikasi finansial.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" data-chat-context="Contact">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <p class="eyebrow reveal" style="--delay: 0.1s;" data-i18n="contact.eyebrow">Kontak</p>
+          <h2 class="reveal" style="--delay: 0.2s;" data-i18n="contact.title">Butuh tampilan futuristik untuk produkmu?</h2>
+          <p class="reveal" style="--delay: 0.3s;">
+            <span data-i18n="contact.desc">Kirim brief singkat, tim Solvix Studio akan respon dalam 24 jam. Bisa untuk desain landing page, produk web, atau audit UI.</span>
+          </p>
+          <div class="contact-info reveal" style="--delay: 0.35s;">
+            <div>
+              <span data-i18n="contact.label.email">Email</span>
+              <strong>hello@solvix.studio</strong>
+            </div>
+            <div>
+              <span data-i18n="contact.label.location">Lokasi</span>
+              <strong>Bandung, Indonesia</strong>
+            </div>
+          </div>
+        </div>
+        <form class="contact-card reveal" style="--delay: 0.35s;">
+          <label>
+            <span data-i18n="contact.form.name">Nama</span>
+            <input type="text" placeholder="Nama lengkap" data-i18n-placeholder="contact.placeholder.name">
+          </label>
+          <label>
+            <span data-i18n="contact.form.email">Email</span>
+            <input type="email" placeholder="nama@email.com" data-i18n-placeholder="contact.placeholder.email">
+          </label>
+          <label>
+            <span data-i18n="contact.form.message">Pesan</span>
+            <textarea rows="4" placeholder="Ceritakan proyekmu" data-i18n-placeholder="contact.placeholder.message"></textarea>
+          </label>
+          <button type="submit" class="btn primary" data-i18n="contact.button">Kirim brief</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-chat-context="Footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer.tagline">Solvix Studio. Crafted for the next wave.</p>
+      <p><span data-i18n="footer.copyright">Copyright</span> <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <div class="chatbot" id="chatbot" data-chat-endpoint="http://127.0.0.1:3002/api/cerebras" data-chat-version="AI">
+    <div class="chatbot-panel" id="chatbot-panel" role="dialog" aria-label="Cerebras Chatbot" data-i18n-aria="aria.chat.panel">
+      <div class="chatbot-header">
+        <div>
+          <strong data-i18n="chat.title">Solvix Studio Assistant</strong>
+          <span class="chatbot-version" id="chatbot-version">AI</span>
+        </div>
+        <button class="chatbot-close" id="chatbot-close" type="button" aria-label="Tutup chatbot" data-i18n-aria="aria.chat.close">&times;</button>
+      </div>
+      <div class="chatbot-messages" id="chatbot-messages">
+        <div class="chatbot-message bot" data-i18n="chat.welcome">Halo! Aku siap bantu menjawab pertanyaanmu.</div>
+      </div>
+      <form class="chatbot-input" id="chatbot-form">
+        <input id="chatbot-input" type="text" placeholder="Tulis pesan..." data-i18n-placeholder="chat.placeholder" autocomplete="off">
+        <button type="submit" data-i18n="chat.send">Kirim</button>
+      </form>
+    </div>
+    <button class="chatbot-toggle" id="chatbot-toggle" type="button" aria-expanded="false" aria-controls="chatbot-panel" aria-label="Buka chatbot" data-i18n-aria="aria.chat.open">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"></path>
+        <path d="M8 9h8M8 13h5"></path>
+      </svg>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
