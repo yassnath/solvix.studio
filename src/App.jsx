@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { translations } from "./data/translations";
 
-const CHAT_ENDPOINT =
-  import.meta.env.VITE_CHAT_ENDPOINT || "http://127.0.0.1:3002/api/cerebras";
+const CHAT_ENDPOINT = import.meta.env.VITE_CHAT_ENDPOINT || "/api/cerebras";
 const CHAT_VERSION = import.meta.env.VITE_CHAT_VERSION || "AI";
 const THEME_STORAGE_KEY = "solvix-theme";
 const LANG_STORAGE_KEY = "solvix-lang";

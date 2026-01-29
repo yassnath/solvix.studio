@@ -10,6 +10,8 @@ public/
     img/
       logo.png
       logo2.png
+api/
+  cerebras.cjs
 src/
   data/
     translations.js
@@ -17,7 +19,6 @@ src/
   main.jsx
   styles.css
 index.html
-server.js
 ```
 
 ## Menjalankan (lokal)
@@ -27,28 +28,36 @@ server.js
    ```powershell
    npm install
    ```
-2. Jalankan dev server:
+2. Set environment untuk chatbot (PowerShell):
+   ```powershell
+   $env:CEREBRAS_API_KEY="isi_api_key"
+   $env:CEREBRAS_MODEL="llama3.1-8b"
+   ```
+3. Jalankan dev server:
    ```powershell
    npm run dev
    ```
-3. Buka URL dari Vite (default `http://127.0.0.1:5173`).
+4. Buka URL dari Vite (default `http://127.0.0.1:5173`).
+
+Chatbot otomatis memakai proxy lokal `/api/cerebras` dari Vite dev server.
 
 ### API Chatbot (Cerebras)
-Jalankan server API terpisah:
-```powershell
-$env:CEREBRAS_API_KEY="isi_api_key"
-$env:PORT="3002"
-node server.js
+API menggunakan serverless function `api/cerebras.cjs` untuk production.
+
+Set environment variable di platform hosting (contoh Vercel):
+```
+CEREBRAS_API_KEY=isi_api_key
+CEREBRAS_MODEL=llama3.1-8b
 ```
 
-Secara default app mengakses:
+Secara default app memanggil endpoint relatif:
 ```
-http://127.0.0.1:3002/api/cerebras
+/api/cerebras
 ```
 
-Opsional: ubah endpoint via env Vite:
+Jika ingin mengarah ke endpoint lain, set env Vite:
 ```
-VITE_CHAT_ENDPOINT=http://127.0.0.1:3002/api/cerebras
+VITE_CHAT_ENDPOINT=https://domain-kamu.com/api/cerebras
 ```
 
 ## Environment Variables
@@ -56,7 +65,6 @@ VITE_CHAT_ENDPOINT=http://127.0.0.1:3002/api/cerebras
 - `CEREBRAS_API_KEY` (wajib)
 - `CEREBRAS_MODEL` (opsional, default: `llama3.1-8b`)
 - `CEREBRAS_API_URL` (opsional)
-- `PORT` (opsional, default: `3000`)
  - `VITE_CHAT_ENDPOINT` (opsional, untuk UI React)
 
 ## Catatan
