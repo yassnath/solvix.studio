@@ -383,7 +383,7 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
 }
 
 .hero {
-  padding-top: clamp(1.2rem, 3.5vw, 3.4rem);
+  padding-top: clamp(0.4rem, 2vw, 1.6rem);
 }
 
 .hero-grid {
@@ -708,6 +708,38 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
 
 .project-top h3 {
   font-size: 1.2rem;
+}
+
+.project-preview {
+  position: relative;
+  height: 120px;
+  border-radius: 16px;
+  border: 1px solid var(--stroke);
+  overflow: hidden;
+  background: rgba(10, 16, 26, 0.35);
+}
+
+.preview-chip {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(var(--accent-rgb), 0.15);
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  z-index: 2;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .chip {

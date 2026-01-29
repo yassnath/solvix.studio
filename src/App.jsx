@@ -451,6 +451,7 @@ const App = () => {
                     <span>{t("hero.holo.tag8")}</span>
                     <span>{t("hero.holo.tag9")}</span>
                     <span>{t("hero.holo.tag10")}</span>
+                    <span>{t("hero.holo.tag11")}</span>
                   </div>
                 </div>
                 <div className="orbit"></div>
@@ -512,6 +513,17 @@ const App = () => {
                   <h3>Lunar Command</h3>
                   <span className="chip">{t("projects.card1.chip")}</span>
                 </div>
+                <div className="project-preview preview-1">
+                  <picture>
+                    <source srcSet="/assets/img/preview-1.png" type="image/png" />
+                    <img
+                      src="/assets/img/preview-1.svg"
+                      alt="Lunar Command preview"
+                      className="preview-image"
+                    />
+                  </picture>
+                  <span className="preview-chip">{t("projects.preview")}</span>
+                </div>
                 <p>{t("projects.card1.desc")}</p>
                 <div className="project-tags">
                   <span>{t("projects.card1.tag1")}</span>
@@ -524,6 +536,17 @@ const App = () => {
                   <h3>Neon Dispatch</h3>
                   <span className="chip">{t("projects.card2.chip")}</span>
                 </div>
+                <div className="project-preview preview-2">
+                  <picture>
+                    <source srcSet="/assets/img/preview-2.png" type="image/png" />
+                    <img
+                      src="/assets/img/preview-2.svg"
+                      alt="Neon Dispatch preview"
+                      className="preview-image"
+                    />
+                  </picture>
+                  <span className="preview-chip">{t("projects.preview")}</span>
+                </div>
                 <p>{t("projects.card2.desc")}</p>
                 <div className="project-tags">
                   <span>{t("projects.card2.tag1")}</span>
@@ -535,6 +558,17 @@ const App = () => {
                 <div className="project-top">
                   <h3>Atlas Studio</h3>
                   <span className="chip">{t("projects.card3.chip")}</span>
+                </div>
+                <div className="project-preview preview-3">
+                  <picture>
+                    <source srcSet="/assets/img/preview-3.png" type="image/png" />
+                    <img
+                      src="/assets/img/preview-3.svg"
+                      alt="Atlas Studio preview"
+                      className="preview-image"
+                    />
+                  </picture>
+                  <span className="preview-chip">{t("projects.preview")}</span>
                 </div>
                 <p>{t("projects.card3.desc")}</p>
                 <div className="project-tags">

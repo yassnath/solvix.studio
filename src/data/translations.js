@@ -36,6 +36,7 @@ export const translations = {
     "hero.holo.tag8": "Software Tester",
     "hero.holo.tag9": "Web Performance",
     "hero.holo.tag10": "API Integration",
+    "hero.holo.tag11": "Digital Invitation",
     "about.eyebrow": "Profil",
     "about.title": "Identitas digital yang menarik dan sesuai kebutuhan pengguna.",
     "about.p1":
@@ -52,6 +53,7 @@ export const translations = {
     "about.panel2.item3": "Visual konsisten dari konsep ke rilis",
     "projects.eyebrow": "Karya pilihan",
     "projects.title": "Eksperimen produk dengan cerita visual yang kuat.",
+    "projects.preview": "Preview",
     "projects.card1.chip": "Sistem UI",
     "projects.card1.desc": "Dashboard real-time yang merangkum data operasional secara ringkas dan cepat.",
     "projects.card1.tag1": "Aplikasi Web",
@@ -139,6 +141,7 @@ export const translations = {
     "hero.holo.tag8": "Software Tester",
     "hero.holo.tag9": "Web Performance",
     "hero.holo.tag10": "API Integration",
+    "hero.holo.tag11": "Digital Invitation",
     "about.eyebrow": "Profile",
     "about.title": "A digital identity built for real user needs.",
     "about.p1":
@@ -155,6 +158,7 @@ export const translations = {
     "about.panel2.item3": "Consistent visuals from concept to launch",
     "projects.eyebrow": "Selected work",
     "projects.title": "Product experiments with a stronger visual story.",
+    "projects.preview": "Preview",
     "projects.card1.chip": "UI System",
     "projects.card1.desc": "A real-time dashboard that keeps operations data clean and fast to read.",
     "projects.card1.tag1": "Web App",
