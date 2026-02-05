@@ -5,6 +5,8 @@ const CHAT_ENDPOINT = import.meta.env.VITE_CHAT_ENDPOINT || "/api/cerebras";
 const CHAT_VERSION = import.meta.env.VITE_CHAT_VERSION || "AI";
 const THEME_STORAGE_KEY = "solvix-theme";
 const LANG_STORAGE_KEY = "solvix-lang";
+const HERO_STAT_TARGETS = [10, 4, 5];
+const HERO_STAT_PLUS = [true, false, false];
 
 const getInitialTheme = () => {
   const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
@@ -31,6 +33,9 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [chatInput, setChatInput] = useState("");
   const [messages, setMessages] = useState([]);
+  const [statCounts, setStatCounts] = useState(() =>
+    HERO_STAT_TARGETS.map(() => 1)
+  );
   const chatMessagesRef = useRef(null);
   const chatHistoryRef = useRef([]);
   const userSetThemeRef = useRef(localStorage.getItem(THEME_STORAGE_KEY) !== null);
@@ -119,6 +124,38 @@ const App = () => {
       chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
     }
   }, [chatOpen, messages]);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+      .matches;
+    if (prefersReducedMotion) {
+      setStatCounts([...HERO_STAT_TARGETS]);
+      return undefined;
+    }
+
+    const duration = 1300;
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+    let rafId = 0;
+
+    const start = performance.now();
+    const tick = (now) => {
+      const rawProgress = Math.min((now - start) / duration, 1);
+      const progress = easeOutCubic(rawProgress);
+      setStatCounts(
+        HERO_STAT_TARGETS.map((target) => {
+          const value = Math.round(1 + (target - 1) * progress);
+          return Math.min(value, target);
+        })
+      );
+
+      if (rawProgress < 1) {
+        rafId = requestAnimationFrame(tick);
+      }
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
 
   const toggleTheme = () => {
     const nextTheme = theme === "dark" ? "light" : "dark";
@@ -258,16 +295,19 @@ const App = () => {
 
   const skillChips = [
     "Figma",
-    "Adobe XD",
-    "Illustrator",
-    "Photoshop",
-    "After Effects",
+    "Capcut",
+    "Canva",
+    "Videography",
+    "OBS",
+    "Resolume",
+    "Pro Presenter",
     "Framer",
     "Notion",
     "HTML5",
     "CSS3",
     "JavaScript",
     "TypeScript",
+    "Kotlin",
     "React",
     "Next.js",
     "Node.js",
@@ -278,6 +318,7 @@ const App = () => {
     "GSAP",
     "Git",
     "GitHub",
+    "VSC",
     "Postman",
     "Docker",
     "Vercel",
@@ -434,15 +475,25 @@ const App = () => {
               </div>
               <div className="hero-stats">
                 <div className="stat-card reveal" style={{ "--delay": "0.5s" }}>
-                  <h3>7+</h3>
+                  <h3>
+                    {statCounts[0]}
+                    {HERO_STAT_PLUS[0] && statCounts[0] >= HERO_STAT_TARGETS[0] && (
+                      <span className="stat-plus">+</span>
+                    )}
+                  </h3>
                   <p>{t("hero.stats.products")}</p>
                 </div>
                 <div className="stat-card reveal" style={{ "--delay": "0.55s" }}>
-                  <h3>4</h3>
+                  <h3>
+                    {statCounts[1]}
+                    {HERO_STAT_PLUS[1] && statCounts[1] >= HERO_STAT_TARGETS[1] && (
+                      <span className="stat-plus">+</span>
+                    )}
+                  </h3>
                   <p>{t("hero.stats.brands")}</p>
                 </div>
                 <div className="stat-card reveal" style={{ "--delay": "0.6s" }}>
-                  <h3>2</h3>
+                  <h3>{statCounts[2]}</h3>
                   <p>{t("hero.stats.hackathons")}</p>
                 </div>
               </div>
@@ -475,6 +526,9 @@ const App = () => {
                     <span>{t("hero.holo.tag9")}</span>
                     <span>{t("hero.holo.tag10")}</span>
                     <span>{t("hero.holo.tag11")}</span>
+                    <span>{t("hero.holo.tag12")}</span>
+                    <span>{t("hero.holo.tag13")}</span>
+                    <span>{t("hero.holo.tag14")}</span>
                   </div>
                 </div>
                 <div className="orbit"></div>
@@ -651,14 +705,14 @@ const App = () => {
                 </div>
               </div>
               <div className="timeline-item reveal" style={{ "--delay": "0.3s" }}>
-                <div className="time">2023</div>
+                <div className="time">2025</div>
                 <div className="detail">
                   <h3>{t("experience.item2.title")}</h3>
                   <p>{t("experience.item2.desc")}</p>
                 </div>
               </div>
               <div className="timeline-item reveal" style={{ "--delay": "0.35s" }}>
-                <div className="time">2022</div>
+                <div className="time">2026</div>
                 <div className="detail">
                   <h3>{t("experience.item3.title")}</h3>
                   <p>{t("experience.item3.desc")}</p>
@@ -680,34 +734,80 @@ const App = () => {
               <p className="reveal" style={{ "--delay": "0.3s" }}>
                 {t("contact.desc")}
               </p>
-              <div className="contact-info reveal" style={{ "--delay": "0.35s" }}>
-                <div>
-                  <span>{t("contact.label.email")}</span>
-                  <strong>hello@solvix.studio</strong>
-                </div>
-                <div>
-                  <span>{t("contact.label.location")}</span>
-                  <strong>Bandung, Indonesia</strong>
-                </div>
+            </div>
+            <div className="contact-card reveal social-card" style={{ "--delay": "0.35s" }}>
+              <h3>{t("contact.social.title")}</h3>
+              <div className="social-list">
+                <a
+                  className="social-item social-item--instagram"
+                  href="https://instagram.com/solvix.studio"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="social-icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect>
+                      <circle cx="12" cy="12" r="4.2"></circle>
+                      <circle cx="17.2" cy="6.8" r="1.1"></circle>
+                    </svg>
+                  </span>
+                  <span className="social-text">
+                    <span className="social-label">{t("contact.label.instagram")}</span>
+                    <strong>@solvix.studio</strong>
+                  </span>
+                </a>
+                <a
+                  className="social-item social-item--whatsapp"
+                  href="https://wa.me/6282221657340"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="social-icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M20.5 11.5a8.5 8.5 0 0 1-12.8 7.3L3.5 20l1.1-4.2A8.5 8.5 0 1 1 20.5 11.5Z"></path>
+                      <path d="M9.3 9.5c.2 1 1.6 2.6 3 3.1.3.1.6 0 .8-.2l.7-.7a.7.7 0 0 1 .8-.1l1.4.6c.4.2.6.7.4 1.1-.3.7-1.1 1.3-2.1 1.2-2.5-.1-5.3-2.6-6.1-5.1-.3-.9 0-1.8.5-2.4.3-.4.8-.4 1.1 0l.8.9c.2.2.2.5 0 .8l-.4.6c-.1.1-.1.3-.1.4Z"></path>
+                    </svg>
+                  </span>
+                  <span className="social-text">
+                    <span className="social-label">{t("contact.label.whatsapp")}</span>
+                    <strong>082221657340</strong>
+                  </span>
+                </a>
+                <a className="social-item social-item--tiktok" href="/">
+                  <span className="social-icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M15 4.8c1.3 1.6 3.2 2.5 5.2 2.7v3.2c-2-.2-3.9-1.1-5.2-2.4v6.3a4.1 4.1 0 1 1-3.9-4.1"></path>
+                      <path d="M11.1 14.7a1.7 1.7 0 1 0 1.6 1.7"></path>
+                    </svg>
+                  </span>
+                  <span className="social-text">
+                    <span className="social-label">{t("contact.label.tiktok")}</span>
+                    <strong>/</strong>
+                  </span>
+                </a>
               </div>
             </div>
-            <form className="contact-card reveal" style={{ "--delay": "0.35s" }}>
-              <label>
-                <span>{t("contact.form.name")}</span>
-                <input type="text" placeholder={t("contact.placeholder.name")} />
-              </label>
-              <label>
-                <span>{t("contact.form.email")}</span>
-                <input type="email" placeholder={t("contact.placeholder.email")} />
-              </label>
-              <label>
-                <span>{t("contact.form.message")}</span>
-                <textarea rows="4" placeholder={t("contact.placeholder.message")}></textarea>
-              </label>
-              <button type="submit" className="btn primary">
-                {t("contact.button")}
-              </button>
-            </form>
           </div>
         </section>
       </main>

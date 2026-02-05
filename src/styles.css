@@ -388,7 +388,7 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   gap: 3rem;
   align-items: center;
 }
@@ -472,6 +472,14 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
   font-family: var(--font-display);
   font-size: 1.6rem;
   margin-bottom: 0.2rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.15rem;
+}
+
+.stat-plus {
+  font-size: 0.9em;
+  color: var(--accent);
 }
 
 .stat-card p {
@@ -481,7 +489,7 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
 
 .hero-visual {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .holo-card {
@@ -494,6 +502,7 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
   overflow: hidden;
   min-height: 320px;
   width: min(420px, 100%);
+  margin-left: auto;
   display: flex;
   flex-direction: column;
 }
@@ -886,6 +895,72 @@ body[data-theme="dark"] .theme-toggle .icon-moon {
   gap: 1rem;
 }
 
+.social-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.social-list {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 0.6rem;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--stroke);
+  background: var(--field-bg);
+  box-shadow: 0 10px 22px rgba(12, 18, 28, 0.12);
+  color: var(--ink);
+  transition: transform 0.2s ease, border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 30px rgba(12, 18, 28, 0.18);
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  color: #04131a;
+  box-shadow: 0 10px 20px rgba(var(--accent-rgb), 0.28);
+  flex-shrink: 0;
+}
+
+.social-item--instagram .social-icon,
+.social-item--whatsapp .social-icon,
+.social-item--tiktok .social-icon {
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  color: #04131a;
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.social-text {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.social-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 .contact-card label {
   display: grid;
   gap: 0.4rem;
@@ -1116,6 +1191,18 @@ body[data-theme="dark"] .chatbot-message.user {
 }
 
 @media (max-width: 960px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    justify-content: center;
+  }
+
+  .holo-card {
+    margin-left: 0;
+  }
+
   .nav {
     position: fixed;
     top: 72px;
